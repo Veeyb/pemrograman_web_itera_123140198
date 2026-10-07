@@ -42,13 +42,13 @@ Aplikasi **Mini POS (Point of Sale)** adalah sistem kasir dan keranjang belanja 
 ## Tangkapan Layar (Screenshot)
 
 1. **Tampilan Form Utama & Keranjang:**
-   ![Tampilan Utama](path/ke/screenshot-utama.png)
+   ![Tampilan Utama](screenshot-utama.png)
 
 2. **Tampilan Validasi Error Form:**
-   ![Tampilan Validation Error](path/ke/screenshot-error.png)
+   ![Tampilan Validation Error](screenshot-error.png)
 
 3. **Tampilan Hasil Kalkulasi & Pembayaran:**
-   ![Tampilan Hasil Kalkulasi](path/ke/screenshot-kalkulator.png)
+   ![Tampilan Hasil Kalkulasi](screenshot-kalkulator.png)
 
 ---
 
