@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aplikasi Kasir & Keranjang Belanja (Mini POS)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🛒 Aplikasi Kasir & Keranjang Belanja (Mini POS)</h1>
+      <p>Sistem Manajemen Kasir Sederhana Kantin / Toko Kampus</p>
+    </header>
+
+    <main>
+      <!-- FORM INPUT BARANG -->
+      <section class="card">
+        <h2>Form Input Barang</h2>
+        <form id="form-pos" onsubmit="event.preventDefault();">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="pos-nama">Nama Barang</label>
+              <input type="text" id="pos-nama" placeholder="Contoh: Buku Tulis">
+              <small class="error-text" id="err-nama"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="pos-harga">Harga Satuan (Rp)</label>
+              <input type="number" id="pos-harga" placeholder="Minimal 500">
+              <small class="error-text" id="err-harga"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="pos-qty">Jumlah / Qty</label>
+              <input type="number" id="pos-qty" value="1" placeholder="Minimal 1">
+              <small class="error-text" id="err-qty"></small>
+            </div>
+          </div>
+          <button type="button" class="btn btn-success" onclick="posTambahBarang()">+ Tambah ke Keranjang</button>
+        </form>
+      </section>
+
+      <!-- TABEL KERANJANG BELANJA -->
+      <section class="card">
+        <h2>Daftar Keranjang Belanja</h2>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Nama Barang</th>
+                <th>Harga Satuan</th>
+                <th>Qty</th>
+                <th>Subtotal</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="pos-cart-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- KALKULATOR & PEMBAYARAN -->
+      <section class="card grid-calculator">
+        <div class="calc-summary">
+          <h3>Ringkasan Pembelian</h3>
+          <p class="summary-item"><span>Total Belanja:</span> <strong id="pos-total-belanja">Rp 0</strong></p>
+          
+          <div class="form-group margin-v">
+            <label for="pos-promo">Kode Promo (Opsional):</label>
+            <input type="text" id="pos-promo" placeholder="Kode: HEMAT10" oninput="posHitungKalkulator()">
+            <small class="info-text">Diskon 10% otomatis jika total >= Rp50.000 atau gunakan kode <strong>HEMAT10</strong></small>
+          </div>
+
+          <p class="summary-item text-success"><span>Diskon (10%):</span> <strong id="pos-diskon">Rp 0</strong></p>
+          <p class="summary-item total-final"><span>Total Akhir:</span> <strong id="pos-total-akhir">Rp 0</strong></p>
+        </div>
+
+        <div class="calc-payment">
+          <h3>Modul Pembayaran</h3>
+          <div class="form-group">
+            <label for="pos-uang-bayar">Uang Bayar (Rp):</label>
+            <input type="number" id="pos-uang-bayar" placeholder="Nominal Uang" oninput="posHitungKalkulator()">
+          </div>
+
+          <div id="pos-kembalian-box" class="kembalian-box">
+            Kembalian: Rp 0
+          </div>
+
+          <button type="button" class="btn btn-danger btn-block margin-v" onclick="posTransaksiBaru()">
+            🔄 Transaksi Baru / Reset
+          </button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
